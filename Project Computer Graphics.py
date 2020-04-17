@@ -1,7 +1,7 @@
 # Final Project Computer Graphics 204382
 # Code By
-# Nuttakorn Masphan 600510545
 # Juthaporn Simmalee 600510537
+# Nuttakorn Masphan 600510545
 
 from tkinter import *
 from tkinter import filedialog
@@ -177,3 +177,4 @@ print('Fifth likly class:',number_to_class[index[5]], '------>', probabilities[0
 
 # save the model
 # model.save('my_model.h5')
+
