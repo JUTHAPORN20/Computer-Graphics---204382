@@ -81,6 +81,58 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 # train the model
 hist = model.fit(x_train, y_train_one_hot, batch_size=256, epochs=10, validation_split=0.3)
 
+################## If you want to train data, delete # in this code ##################
+
+### get the models accuracy ###
+# model.evaluate(x_test, y_test_one_hot)[1]
+
+### visualize the models accuracy ###
+# plt.plot(hist.history['acc'])
+# plt.plot(hist.history['val_acc'])
+# plt.title('Model Accuracy')
+# plt.ylabel('Accuracy')
+# plt.xlabel('Epoch')
+# plt.legend(['Train', 'Val'], loc='upper left')
+# plt.show()
+
+### visualize the models loss ###
+# plt.plot(hist.history['loss'])
+# plt.plot(hist.history['val_loss'])
+# plt.title('Model Loss')
+# plt.ylabel('Loss')
+# plt.xlabel('Epoch')
+# plt.legend(['Train', 'Val'], loc='upper right')
+# plt.show()
+
+### load the data ###
+# from google.colab import files
+# uploaded = files.upload()
+# my_image = plt.imread('dog.jpg')
+
+### show the upload image ###
+# img =plt.imshow(my_image)
+
+### resize the image ###
+# from skimage.transform import resize
+# my_image_resize = resize(my_image, (32,32,3))
+# img = plt.imshow(my_image_resize)
+
+### get the probabilities for each class ###
+# import numpy as np
+# probabilities = model.predict(np.array([my_image_resize,] ) )
+# #print the probabilities
+# probabilities
+
+# number_to_class = ['airplan', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'hourse', 'ship', 'truck']
+# index = np.argsort(probabilities[0,:])
+# print('Most likly class:',number_to_class[index[9]], '--probability:', probabilities[0, index[9]])
+# print('Second likly class:',number_to_class[index[8]], '--probability:', probabilities[0, index[8]])
+# print('Third likly class:',number_to_class[index[7]], '--probability:', probabilities[0, index[7]])
+# print('Fourth likly class:',number_to_class[index[6]], '--probability:', probabilities[0, index[6]])
+# print('Fifth likly class:',number_to_class[index[5]], '--probability:', probabilities[0, index[5]])
+
+###########################################################################################
+
 #save the model
 model.save('my_model.h5')
 

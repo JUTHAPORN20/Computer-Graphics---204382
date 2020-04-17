@@ -5,9 +5,6 @@
 
 from tkinter import *
 from tkinter import filedialog
-from keras.models import load_model
-import matplotlib.pyplot as plt
-from skimage.transform import resize
 import numpy as np
 import cv2
 
@@ -105,8 +102,11 @@ while True:
 # Close all cv2 Windows
 cv2.destroyAllWindows()
 
-####################### increase gamma ####################### 
+####################### increase gamma #######################
 # from __future__ import print_function
+import numpy as np
+# import argparse
+import cv2
 def adjust_gamma(image, gamma=1.0):
 	invGamma = 1.0 / gamma
 	table = np.array([((i / 255.0) ** invGamma) * 255
@@ -154,7 +154,11 @@ for gamma in np.arange(0.0, 2.0, 0.5):
 		cv2.imwrite(filename,adjusted)	
 
 ####################### Classify #######################
-		
+from keras.models import load_model
+import matplotlib.pyplot as plt
+from skimage.transform import resize
+import numpy as np
+
 model = load_model('my_model.h5')
 my_image = plt.imread(filename)# read file
 
@@ -165,11 +169,11 @@ probabilities
 
 number_to_class = ['airplan', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'hourse', 'ship', 'truck']
 index = np.argsort(probabilities[0,:])
-print('Most likly class:',number_to_class[index[9]], '--probability:', probabilities[0, index[9]])
-print('Second likly class:',number_to_class[index[8]], '--probability:', probabilities[0, index[8]])
-print('Third likly class:',number_to_class[index[7]], '--probability:', probabilities[0, index[7]])
-print('Fourth likly class:',number_to_class[index[6]], '--probability:', probabilities[0, index[6]])
-print('Fifth likly class:',number_to_class[index[5]], '--probability:', probabilities[0, index[5]])
+print('Most likly class:',number_to_class[index[9]], '------>', probabilities[0, index[9]]*100, '%')
+print('Second likly class:',number_to_class[index[8]], '------>', probabilities[0, index[8]]*100, '%')
+print('Third likly class:',number_to_class[index[7]], '------>', probabilities[0, index[7]]*100, '%')
+print('Fourth likly class:',number_to_class[index[6]], '------>', probabilities[0, index[6]]*100, '%')
+print('Fifth likly class:',number_to_class[index[5]], '------>', probabilities[0, index[5]]*100, '%')
 
 # save the model
 # model.save('my_model.h5')
