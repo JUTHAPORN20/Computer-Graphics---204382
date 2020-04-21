@@ -42,7 +42,10 @@ def Cap_webcam():
             if key & 0xFF == ord('c'):
                     cv2.imwrite('Capture.png', frame)
                     break
-
+            elif key & 0xFF == ord('q'):
+                    cv2.destroyAllWindows()
+                    exit()
+                    break
         cap.release()
         cv2.destroyAllWindows()
         path = 'Capture.png'
